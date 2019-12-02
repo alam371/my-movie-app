@@ -3,50 +3,51 @@
 const express = require('express')
 const router = express.Router()
 
-const bookService = require('./bookService')
+const movieService = require('./movieService')
 
-// GET /books/
+// GET /movies/
 router.route('/')
   .get(async (req, res, next) => {
     try {
-      // 1. Fetch all books from database
-      const books = await bookService.listBooks()
-      // 2. Respond with list of books
+      // 1. Fetch all movies from database
+      const movies = await movieService.listMovies()
+      // 2. Respond with list of movies
       res.status(200).send({
-        data: books
+        data: movies
       })
-    } catch (e) {
+    } catch (err) {
       // 3. If error, send to the error handler
-      next(e)
+      next(err)
     }
   })
 
-// POST /books/
+// POST /movies/
 router.route('/')
   .post(async (req, res, next) => {
     // 1. Get data from request body
     // Format of the request for this destructuring would look like:
     /*
       {
-        "bookData": {
+        "movieData": {
           "name": "Moby Dick",
           "author": "Herman Melville",
-          "summary": "Really good book. It's about a lot of stuff"
+          "summary": "Really good movie. It's about a lot of stuff"
         }
       }
     */
     // Play around with the destructuring if you would like the request to be sent in a different way
-    const { bookData } = req.body
+    const {  movieData } = req.body
     try {
-      // 2. Create book from data
-      const book = await bookService.createBook(bookData)
-      // 3. Respond with created book
+      // 2. Create movie from data
+      const movie = await movieService.createMovie(movieData)
+      // 3. Respond with created movie
       res.status(200).send({
-        data: [book]
+        data: [movie]
       })
-    } catch (e) {
+    } catch (err) {
+        console.error(errZ)
       // 4. If error, send to the error handler
-      next(e)
+      next(err)
     }
   })
 
