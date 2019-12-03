@@ -45,7 +45,7 @@ router.route('/')
         data: [movie]
       })
     } catch (err) {
-        console.error(errZ)
+        console.error(err)
       // 4. If error, send to the error handler
       next(err)
     }
