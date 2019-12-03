@@ -22,8 +22,20 @@ app.use('/', express.static(publicPath))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+
+
+//Add static middleware
 // 5. Utilise routes
 app.use('/api/movies', movieRoutes)
+
+//this needs to be at the bottom route before route handlers because it is a catch all
+app.use('/*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'))
+})
+
+//probably handle some errors
+// app.use((err, req, res, next) => {
+// })
 
 // 6. Define configuration for mongodb
 const MONGO_CONFIG = {
