@@ -13,11 +13,10 @@ const movieSchema = exports.schema = new Schema({
   hidden: Boolean
 })
 
-const actorSchema = exports.schema = new Schema({
-  actors: String,
-  movies: []
-})
+// const actorSchema = exports.schema = new Schema({
+//   actors: String
+// })
 
 const Movie = exports.model = mongoose.model('Movie', movieSchema)
-const Actor  =exports.model = mongoose.model('Actor', actorSchema)
+// const Actor  = exports.model = mongoose.model('Actor', actorSchema)
 

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "node api/server.js",
+    "build": "npm run build:client",
     "test": "react-scripts test",
     "start:server": "nodemon api/server.js --ignore src/ --ignore build/ --ignore public/",
     "start:client": "react-scripts start",
@@ -21,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/HackerYou/con-ed-full-stack/issues"
   },
-  "homepage": "https://github.com/HackerYou/con-ed-full-stack#readme",
+  "homepage": "https://alam371-fullstack-test.herokuapp.com/",
   "dependencies": {
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
@@ -33,7 +34,6 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.2.0",
     "uuid": "^3.3.3"
   },
   "browserslist": [

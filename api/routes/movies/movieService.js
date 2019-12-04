@@ -204,8 +204,8 @@ exports.listMovies = async () => {
 // Create a new book that will be added to the database
 exports.createMovie = async (movieData) => {
   // 1. Create a book instance
-  const movie = new Movie(movieData)
   try {
+    const movie = new Movie(movieData)
     // 2. Save book to database
     const doc = await movie.save()
     // 3. return with created book
