@@ -7,59 +7,39 @@ const movieService = require('./movieService')
 
 // GET /movies/
 movieRouter.route('/')
-  .get(async (req, res, next) => {
+  .get(async (req, res) => {
     try {
       // 1. Fetch all movies from database
       const movies = await movieService.listMovies()
       // 2. Respond with list of movies
-      res.status(200).send({
+      res.status(200).json({
         data: movies
       })
     } catch (err) {
       // 3. If error, send to the error handler
-      next(err)
+        console.log(err);
+        res.status(500).json({ error: 'internal server error' });
     }
-  }).post(async (req, res, next) => {
+  })
+    .post(async (req, res) => {
+    const { title, director, plot, comment } = req.body;
+    if (!title || title === ""){
+        res.status(400).json({ error: 'title must be provided'});
+        return
+    }
       try {
-          const { body } = req
-          const movie = await movieService.createMovie(body)
-          res.json(movie)
+          const newMovie = await movieService.createMovie({
+              title,
+              director,
+              plot,
+              comment,
+          });
+          res.status(200).json({ id: newMovie.id })
 
       } catch (err){
-          console.error(err)
-          next(err)
+          console.error(err);
+          res.status(500).json({ error: 'internal server error' });
       }
 
-})
-
-// POST /movies/
-// movieRouter.route('/')
-//   .post(async (req, res, next) => {
-//     // 1. Get data from request body
-//     // Format of the request for this destructuring would look like:
-//     /*
-//       {
-//         "movieData": {
-//           "name": "Moby Dick",
-//           "author": "Herman Melville",
-//           "summary": "Really good movie. It's about a lot of stuff"
-//         }
-//       }
-//     */
-//     // Play around with the destructuring if you would like the request to be sent in a different way
-//     const { movieData } = req.body
-//     try {
-//       // 2. Create movie from data
-//       const movie = await movieService.createMovie(movieData)
-//       // 3. Respond with created movie
-//       res.status(200).send({
-//         data: [movie]
-//       })
-//     } catch (err) {
-//         console.error(err)
-//       // 4. If error, send to the error handler
-//       next(err)
-//     }
-//   })
-
-exports.router = movieRouter
+});
+exports.router = movieRouter;

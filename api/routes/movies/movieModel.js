@@ -1,22 +1,18 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 // Map to fields in the DB
-const movieSchema = exports.schema = new Schema({
-  id: String,
+const movieSchema = new Schema({
   title: String,
   director: String,
   plot: String,
-  date: Number,
-  hidden: Boolean
+  comment: {
+    type: String
+  }
 })
 
-// const actorSchema = exports.schema = new Schema({
-//   actors: String
-// })
+module.exports = mongoose.model('Movie', movieSchema)
 
-const Movie = exports.model = mongoose.model('Movie', movieSchema)
-// const Actor  = exports.model = mongoose.model('Actor', actorSchema)
 
