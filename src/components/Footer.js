@@ -1,11 +1,17 @@
 import React from 'react';
+import Typography from "@material-ui/core/Typography";
 
-function Footer (){
+
+function Copyright() {
     return (
-        <footer>
-        <h2>this will be the footer</h2>
-    </footer>
-)
+        <Typography variant="body2" color="textSecondary" align="center">
+        {"Copyright © "}
+        <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+    </Link>{" "}
+    {new Date().getFullYear()}
+    {"."}
+</Typography>
+);
 }
-
 export default Footer;

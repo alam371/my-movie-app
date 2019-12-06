@@ -8,6 +8,7 @@ import {
 
 import Signin from "./components/Signin";
 import Dashboard from "./components/Dashboard";
+import Form from "./components/Form";
 
 class App extends Component {
     state = {
@@ -30,6 +31,11 @@ class App extends Component {
         <Redirect to="/login" />
     )
     }
+        />
+        <Route
+        exact
+        path="/create"
+        component={Form}
         />
         <Route
         exact
