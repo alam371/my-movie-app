@@ -8,6 +8,7 @@ const movieService = require('./movieService')
 // GET /movies/
 movieRouter.route('/')
   .get(async (req, res) => {
+      console.log('this is working')
     try {
       // 1. Fetch all movies from database
       const movies = await movieService.listMovies()

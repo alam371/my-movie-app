@@ -4,10 +4,7 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { FormControl } from '@material-ui/core';
 
 const BootstrapInput = withStyles(theme => ({
     root: {

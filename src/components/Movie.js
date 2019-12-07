@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles(theme => ({
-    bookContainer: {
+    movieContainer: {
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(8, 0, 6),
     },
@@ -39,6 +39,7 @@ export default function Movie(props) {
             getPageById()
         }
     })
+    console.log(props)
     return (
         <Container className={classes.movieContainer}>
         <Grid container spacing={2}>

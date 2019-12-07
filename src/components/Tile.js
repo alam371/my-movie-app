@@ -8,31 +8,32 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from '@material-ui/core/styles';
 
+
 const styles = makeStyles(theme => ({
-    card: {
+    movie: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
     },
-    cardMedia: {
+    movieMedia: {
         paddingTop: '56.25%', // 16:9
     },
-    cardContent: {
+    movieContent: {
         flexGrow: 1,
     },
 }));
 
 export default function TileComp(props) {
     const classes = styles();
-
+    console.log('tile-props::',props)
     return (
-        <Card className={classes.card}>
+        <Card className={classes.movie}>
         <CardMedia
-    className={classes.cardMedia}
+    className={classes.movieMedia}
     image={props.image || "https://source.unsplash.com/random"}
     title={props.imageTitle || "random image"}
     />
-    <CardContent className={classes.cardContent}>
+    <CardContent className={classes.movieContent}>
         <Typography gutterBottom variant="h5" component="h5">
         {props.title}
         </Typography>
