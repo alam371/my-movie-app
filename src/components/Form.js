@@ -116,7 +116,7 @@ export default function Form(props) {
     variant="outlined"
     color="primary"
     onClick={() => {
-        props.history.push("/");
+        props.history.push("/dashboard");
     }}
 >
     Add Movie

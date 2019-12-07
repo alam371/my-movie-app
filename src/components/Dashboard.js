@@ -61,11 +61,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const cards = [1, 2, 3, 4, 5, 6];
 
-export default function Album() {
+
+export default function Album(props) {
     const classes = useStyles();
-
+    const cards = [1, 2, 3, 4, 5, 6];
+    console.log(props)
     return (
         <React.Fragment>
         <CssBaseline />
@@ -104,7 +105,7 @@ export default function Album() {
     <Button
     variant="contained"
     color="primary"
-    onClick={() => {this.props.history.push('/create')}}>
+    onClick={() => {props.history.push('/create')}}>
         Add a movie
     </Button>
     </Grid>

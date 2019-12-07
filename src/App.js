@@ -48,7 +48,7 @@ class App extends Component {
         exact
         path="/dashboard"
         render={renderProps =>
-        !this.state.loggedIn ? <Redirect to="/login" /> : <Dashboard />
+        !this.state.loggedIn ? <Redirect to="/login" /> : <Dashboard {...renderProps}/>
     }
         />
         </Switch>
