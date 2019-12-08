@@ -58,7 +58,37 @@ const useStyles = makeStyles(theme => ({
 
 export default function Form(props) {
     const classes = useStyles();
-    const [rating, updateRating] = useState(1);
+    // const [rating, updateRating] = useState(1);
+    const [title, updateTitle] = useState('');
+    const [director, updateDirector] = useState('');
+    const [comment, updateComment] = useState('');
+    const [plot, updatePlot] = useState('');
+
+    async function createMovie() {
+        try{
+            const response = await fetch('/api/movies/', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title,
+                    director,
+                    comment,
+                    plot
+                })
+            });
+            const resp = await response.json();
+            if( resp.status !== 200) {
+                throw new Error(resp.error);
+            }
+            // console.log('createMovie form-resp::', resp );
+        } catch (err) {
+            console.error(err);
+            console.log('there is an error');
+        }
+
+    }
 
     return (
         <Container className={classes.content} maxWidth="md">
@@ -70,40 +100,48 @@ export default function Form(props) {
     </div>
     <div>
     <TextField
-    id="standard-multiline-flexible"
-    label="Movie Title"
-    multiline
-    rowsMax="2"
-    className={classes.textField}
-    margin="normal"
+        id="standard-multiline-flexible"
+        label="Movie Title"
+        multiline
+        rowsMax="2"
+        className={classes.textField}
+        margin="normal"
+        value={title}
+        onChange={(e) => {updateTitle(e.target.value)}}
         />
         <TextField
-    id="standard-multiline-flexible"
-    label="Director Name"
-    multiline
-    rowsMax="2"
-    className={classes.textField}
-    margin="normal"
+        id="standard-multiline-flexible"
+        label="Director Name"
+        multiline
+        rowsMax="2"
+        className={classes.textField}
+        margin="normal"
+        value={director}
+        onChange={(e) => {updateDirector(e.target.value)}}
         />
         </div>
         <div>
         <TextField
-    id="outlined-multiline-static"
-    label="Plot Summary"
-    multiline
-    rowsMax="4"
-    className={classes.textField}
-    margin="normal"
-    variant="outlined"
+        id="outlined-multiline-static"
+        label="Plot Summary"
+        multiline
+        rowsMax="4"
+        className={classes.textField}
+        margin="normal"
+        variant="outlined"
+        value={plot}
+        onChange={(e) => {updatePlot(e.target.value)}}
         />
         <TextField
-    id="outlined-multiline-static"
-    label="Comments"
-    multiline
-    rowsMax="4"
-    className={classes.textField}
-    margin="normal"
-    variant="outlined"
+        id="outlined-multiline-static"
+        label="Comments"
+        multiline
+        rowsMax="4"
+        className={classes.textField}
+        margin="normal"
+        variant="outlined"
+        value={comment}
+        onChange={(e) => {updateComment(e.target.value)}}
         />
         </div>
         <div>
@@ -113,7 +151,8 @@ export default function Form(props) {
     variant="outlined"
     color="primary"
     onClick={() => {
-        props.history.push("/dashboard");
+        createMovie()
+        props.history.push("/");
     }}
 >
     Add Movie

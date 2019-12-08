@@ -39,7 +39,7 @@ export default function Movie(props) {
             getPageById()
         }
     })
-    console.log(props)
+
     return (
         <Container className={classes.movieContainer}>
         <Grid container spacing={2}>

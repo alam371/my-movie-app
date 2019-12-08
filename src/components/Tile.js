@@ -25,7 +25,6 @@ const styles = makeStyles(theme => ({
 
 export default function TileComp(props) {
     const classes = styles();
-    console.log('tile-props::',props)
     return (
         <Card className={classes.movie}>
         <CardMedia
@@ -39,6 +38,12 @@ export default function TileComp(props) {
         </Typography>
         <Typography gutterBottom variant="h6" component="h6">
         {props.subtitle}
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h6">
+        {props.plot}
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h6">
+        {props.comment}
         </Typography>
         </CardContent>
         <CardActions>

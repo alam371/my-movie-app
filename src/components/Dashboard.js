@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 
 import Tile from './Tile';
+import Form from './Form';
 
 function Copyright() {
     return (
@@ -54,7 +55,6 @@ class Dashboard extends Component {
     }
 
     async componentDidMount(){
-        console.log("componentdid")
         const response = await fetch('/api/movies');
         const resp = await response.json()
         console.log(resp)
@@ -64,12 +64,11 @@ class Dashboard extends Component {
 
     }
 
-    pushToTile = (id) => {
-        this.props.history.push(`/movies/${id}`)
-    }
+    // pushToTile = (id) => {
+    //     this.props.history.push(`/movies/${id}`)
+    // }
 
     render(){
-        console.log('render')
         const { classes, history } = this.props;
         return (
             <React.Fragment>

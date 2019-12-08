@@ -8,7 +8,6 @@ const movieService = require('./movieService')
 // GET /movies/
 movieRouter.route('/')
   .get(async (req, res) => {
-      console.log('this is working')
     try {
       // 1. Fetch all movies from database
       const movies = await movieService.listMovies()
@@ -23,6 +22,7 @@ movieRouter.route('/')
     }
   })
     .post(async (req, res) => {
+        console.log('post is working')
     const { title, director, plot, comment } = req.body;
     if (!title || title === ""){
         res.status(400).json({ error: 'title must be provided'});
