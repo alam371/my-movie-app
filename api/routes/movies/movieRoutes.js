@@ -18,6 +18,9 @@ movieRouter.route('/')
     } catch (err) {
       // 3. If error, send to the error handler
         console.log(err);
+        // One other option for error handling would be to pass the error to  next() and let express handle that error for you
+        // (or write a custom express error handler)
+        // https://expressjs.com/en/guide/error-handling.html
         res.status(500).json({ error: 'internal server error' });
     }
   })
